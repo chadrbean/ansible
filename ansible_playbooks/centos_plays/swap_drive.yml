@@ -1,7 +1,6 @@
 # Create swap drives
 ---
 -hosts:test
-tasks:
 	- name Execute command mkdir /swap
 	  command: "swapoff -a"
 	- name Execute command pvcreate
