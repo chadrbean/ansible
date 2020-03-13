@@ -1,7 +1,7 @@
 # Create swap drives
--
+---
 name:mk_swap_partition
-hosts:centos8_servers
+-hosts:test
 tasks:
 	- name Execute command mkdir /swap
 	  command: "swapoff -a"
