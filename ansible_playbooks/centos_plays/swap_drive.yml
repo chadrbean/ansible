@@ -1,20 +1,3 @@
-# Create swap drives
----
--hosts:test
- - name: Execute command mkdir /swap
-   command: "swapoff -a"
- - name: Execute command pvcreate
-   command: "pvcreate /dev/sdc"
- - name: Execute command vgcreate
-   command: "vgcreate swap /dev/sdc"
- - name: Execute command lvcreate
-   command: "lvcreate -l 100%FREE -n swap swap"
- - name: Execute command sed fstab
-   command: "sed 's#/dev/mapper/swap-swap#/dev/mapper/swap-swap#1' /etc/fstab"
- - name: Execute command mkswap
-   command: "mkswap /dev/mapper/swap-swap"
- - name: Execute command swapon
-   command: "swapon /dev/mapper/swap-swap"
-
-
-
+- name: return motd to registered var
+  command: swapoff -a
+ 
