@@ -1,6 +1,5 @@
 # Create swap drives
 ---
-name:mk_swap_partition
 -hosts:test
 tasks:
 	- name Execute command mkdir /swap
