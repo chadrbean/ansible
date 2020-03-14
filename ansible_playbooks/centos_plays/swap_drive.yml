@@ -6,7 +6,8 @@
    - name: Update Server
      yum:
       name: '*'
-
+      state: latest # latest, updates pkg, present/installed ensures pkg is installed
+   
 - name: Create a New Swap Drive
   hosts: test
   become: true
@@ -25,5 +26,6 @@
      command: mkswap /dev/mapper/swap-swap
    - name: turn on swap
      command: swapon /dev/mapper/swap-swap
-   - name: Reboot
-     command: reboot  
+- name: Reboot Machine
+  reboot:
+   reboot_timeout: 15
