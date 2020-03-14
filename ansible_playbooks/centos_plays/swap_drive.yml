@@ -25,6 +25,6 @@
      command: mkswap /dev/mapper/swap-swap
    - name: turn on swap
      command: swapon /dev/mapper/swap-swap
-- name: Reboot Machine
-  reboot:
-   reboot_timeout: 15
+   - name: Reboot machine
+     reboot:
+      reboot_timeout: 15
