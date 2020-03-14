@@ -10,6 +10,7 @@
    
 - name: Create a New Swap Drive
   become: true
+  hosts: test
   tasks:
    - name: swapoff
      command: swapoff -a
