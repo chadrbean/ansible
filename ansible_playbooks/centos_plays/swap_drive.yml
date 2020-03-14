@@ -6,10 +6,16 @@
   tasks:
    - name: swapoff
      command: swapoff -a
+   - name: add device to pv 
      command: pvcreate /dev/sdb
+   - name: volume group create
      command: vgcreate swap /dev/sdc
+   - name: logical volume create 
      command: lvcreate -l 100%FREE -n swap swap
+   - name: sed command fstab 
      command: sed 's#/dev/mapper/swap-swap#/dev/mapper/swap-swap#1' /etc/fstab
+   - name: make swap
      command: mkswap /dev/mapper/swap-swap
-     #     command: swapon /dev/mapper/swap-swap
+   - name: turn on swap
+     command: swapon /dev/mapper/swap-swap
      
