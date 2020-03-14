@@ -6,5 +6,5 @@
   tasks:
    - name: swapoff
      command:
-      name: "swapoff -a"
+      name: swapoff -a
       state: present
