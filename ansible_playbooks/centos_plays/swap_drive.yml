@@ -27,4 +27,3 @@
      command: swapon /dev/mapper/swap-swap
    - name: Reboot machine
      reboot:
-      reboot_timeout: 15
