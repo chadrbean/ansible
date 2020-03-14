@@ -9,7 +9,7 @@
    - name: add device to pv 
      command: pvcreate /dev/sdb
    - name: volume group create
-     command: vgcreate swap /dev/sdc
+     command: vgcreate swap /dev/sdb
    - name: logical volume create 
      command: lvcreate -l 100%FREE -n swap swap
    - name: sed command fstab 
