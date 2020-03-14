@@ -27,5 +27,6 @@
    - name: turn on swap
      command: swapon /dev/mapper/swap-swap
 - name: Reboot Machine
+  hosts: test
   reboot:
    reboot_timeout: 15
