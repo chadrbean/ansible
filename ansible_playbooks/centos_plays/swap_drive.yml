@@ -1,5 +1,4 @@
 ---
-
 - name: Update Server
   hosts: test
   become: true
