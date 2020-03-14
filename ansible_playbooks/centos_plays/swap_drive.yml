@@ -9,7 +9,6 @@
       state: latest # latest, updates pkg, present/installed ensures pkg is installed
    
 - name: Create a New Swap Drive
-  hosts: test
   become: true
   tasks:
    - name: swapoff
@@ -27,6 +26,5 @@
    - name: turn on swap
      command: swapon /dev/mapper/swap-swap
 - name: Reboot Machine
-  hosts: test
   reboot:
    reboot_timeout: 15
