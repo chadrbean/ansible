@@ -1,5 +1,5 @@
 ---
-- name: Install net-tools
+- name: Create a New Swap Drive
   hosts: test
   become: true
 
@@ -18,4 +18,5 @@
      command: mkswap /dev/mapper/swap-swap
    - name: turn on swap
      command: swapon /dev/mapper/swap-swap
-     
+   - name: Reboot
+     command: reboot  
