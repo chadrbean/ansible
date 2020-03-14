@@ -6,7 +6,7 @@
   tasks:
    - name: Update Server
      yum:
-      name: update
+      name: *
 
 - name: Create a New Swap Drive
   hosts: test
