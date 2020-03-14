@@ -7,4 +7,4 @@
    - name: swapoff
      command:
       name: swapoff -a
-      state: present
+     
