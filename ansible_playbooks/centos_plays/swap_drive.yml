@@ -1,8 +1,16 @@
 ---
+
+- name: Update Server
+  hosts: test
+  become: true
+  tasks:
+   - name: Update Server
+     yum:
+      name: update
+
 - name: Create a New Swap Drive
   hosts: test
   become: true
-
   tasks:
    - name: swapoff
      command: swapoff -a
