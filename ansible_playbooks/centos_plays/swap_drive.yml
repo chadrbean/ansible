@@ -11,5 +11,5 @@
      command: lvcreate -l 100%FREE -n swap swap
      command: sed 's#/dev/mapper/swap-swap#/dev/mapper/swap-swap#1' /etc/fstab
      command: mkswap /dev/mapper/swap-swap
-     command: swapon /dev/mapper/swap-swap
+     #     command: swapon /dev/mapper/swap-swap
      
