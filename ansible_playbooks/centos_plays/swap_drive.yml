@@ -5,6 +5,5 @@
 
   tasks:
    - name: swapoff
-     command:
-      name: swapoff -a
+     command: swapoff -a
      
