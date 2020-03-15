@@ -21,7 +21,7 @@
   # Use the URI    
   - name: Get hosts from vCenter
     uri:
-      url: "https://{{secret.hostname}}/rest/vcenter/hostfilter.names=192.168.1.101&filter.names=192.168.1.102'"
+      url: "https://{{secret.hostname}}/rest/vcenter/host?filter.names=192.168.1.101&filter.names=192.168.1.102'"
       force_basic_auth: yes
       validate_certs: no
       headers:
