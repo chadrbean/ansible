@@ -38,8 +38,8 @@
       options:
         'Syslog.global.loghost': '192.168.1.1'
       validate_certs: no
-    with_items: {{vchosts.json.value}}  # with items is a itterator, it will iterate over all vchosts
-    
+    with_items:   # with items is a itterator, it will iterate over all vchosts
+      -"{{vchosts.json.value}}"
 
   - name: Ensure Syslog Service is running on ESXI hosts
     vmware_host_service_manager:
@@ -50,5 +50,5 @@
       service_name: vmsyslogd
       state: present
       validate_certs: no
-    with_items: {{vchosts.json.value}}  # with items is a itterator, it will iterate over all vchosts
-      
+    with_items:   # with items is a itterator, it will iterate over all vchosts
+      -"{{vchosts.json.value}}"
