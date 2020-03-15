@@ -34,7 +34,7 @@
       hostname: "{{secret.hostname}}"
       username: "{{secret.username}}"
       password: "{{secret.password}}"
-      esxi_hostname: "{{vchosts.name}}"
+      esxi_hostname: "{{item.name}}"
       options:
         'Syslog.global.loghost': '192.168.1.1'
       validate_certs: no
