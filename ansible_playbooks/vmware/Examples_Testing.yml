@@ -1,9 +1,8 @@
 ---
 
 - name: Include password in env
-  include_vars:
-    file: "/mnt/git/_ansible_vaults/secrets.yml"
-    name: pass
+  include_vars: "/mnt/git/_ansible_vaults/secrets.yml"
+  
 
 # # Create a login Session
 # - name: vCenter Login
