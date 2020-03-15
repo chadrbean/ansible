@@ -15,5 +15,5 @@
     resource_pool: test_rp
     validate_certs: False
     state: present
-  delegate_to: localhost
+    delegate_to: localhost
     

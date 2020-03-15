@@ -3,7 +3,7 @@
 
 - name: Including Secret Environment Items
   include_vars:
-    file: /run/media/chad/1TB/git/_ansible-vault/secrets.yml
+    file: ../../../_ansible_vaults/secrets.yml
     name: secret
 
 # Create a login Session
