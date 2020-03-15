@@ -1,8 +1,8 @@
 ---
-- name: Include password in env
-  hosts: local
-  include_vars: secrets.yml
-  
+- name: Include vars of stuff.yaml into the 'stuff' variable (2.2).
+  include_vars:
+    file: stuff.yaml
+    name: stuff
 
 # # Create a login Session
 # - name: vCenter Login
