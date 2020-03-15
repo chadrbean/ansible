@@ -1,7 +1,7 @@
 ---
 
 - name: Include password in env
-  include_vars: "/mnt/git/_ansible_vaults/secrets.yml"
+  include_vars: secrets.yml
   
 
 # # Create a login Session
