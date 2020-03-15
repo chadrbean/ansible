@@ -1,6 +1,6 @@
 ---
-
 - name: Include password in env
+  hosts: local
   include_vars: secrets.yml
   
 
