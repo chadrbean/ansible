@@ -9,14 +9,14 @@
   # Create a login Session
   - name: vCenter Login
     uri:
-        url: "https://{{secret.hostname}}/rest/com/vmware/cis/session"
-        force_basic_auth: yes
-        method: POST
-        user: "{{secret.username}}"
-        password: "{{secret.password}}"
-        status_code: 200
-        validate_certs: no
-        register: login
+      url: "https://{{secret.hostname}}/rest/com/vmware/cis/session"
+      force_basic_auth: yes
+      method: POST
+      user: "{{secret.username}}"
+      password: "{{secret.password}}"
+      status_code: 200
+      validate_certs: no
+      register: login
 
   # Use the URI    
   - name: Get hosts from vCenter
@@ -37,7 +37,7 @@
       esxi_hostname: "{{item.name}}"
       options:
         'Syslog.global.loghost': '192.168.1.1'
-        validate_certs: no
+      validate_certs: no
       with_items:   # with items is a itterator, it will iterate over all vchosts
         -"{{vchosts.json.value}}"
 
