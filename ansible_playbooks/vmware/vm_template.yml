@@ -1,4 +1,5 @@
 ---
+
 - name: Deploy Virtual Machine from template in content library
   var_files
     - /mnt/git/_ansible-vault/vault-pass.yml
