@@ -10,7 +10,7 @@
   - name: vCenter Login
     uri:
       url: "https://{{secret.hostname}}/rest/com/vmware/cis/session"
-      # force_basic_auth: yes
+      force_basic_auth: yes
       # method: POST
       # user: "{{secret.username}}"
       # password: "{{secret.password}}"
