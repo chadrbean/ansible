@@ -1,8 +1,7 @@
 ---
 - hosts: localhost
-
   - name: Including Secret Environment Items
-    include_vars:
+    - include_vars:
       file: /mnt/git/_ansible_vaults/secrets.yml
       name: secret
 
