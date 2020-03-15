@@ -1,8 +1,10 @@
 ---
-- name: Include vars of stuff.yaml into the 'stuff' variable (2.2).
-  include_vars:
-    file: stuff.yaml
-    name: stuff
+- hosts: localhost
+  tasks:
+    - name: Include vars of stuff.yaml into the 'stuff' variable (2.2).
+      include_vars:
+        file: stuff.yaml
+        name: stuff
 
 # # Create a login Session
 # - name: vCenter Login
