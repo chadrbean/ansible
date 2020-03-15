@@ -2,53 +2,53 @@
 - hosts: localhost
 
 - name: Including Secret Environment Items
-  include_vars:
-    file: /mnt/git/_ansible_vaults/secrets.yml
-    name: secret
+ include_vars:
+ file: /mnt/git/_ansible_vaults/secrets.yml
+ name: secret
 
-# Create a login Session
-- name: vCenter Login
-  uri:
-      url: "https://{{secret.hostname}}/rest/com/vmware/cis/session"
-      force_basic_auth: yes
-      method: POST
-      user: "{{secret.username}}"
-      password: "{{secret.password}}"
-      status_code: 200
-      validate_certs: no
-      register: login
+# # Create a login Session
+# - name: vCenter Login
+#   uri:
+#       url: "https://{{secret.hostname}}/rest/com/vmware/cis/session"
+#       force_basic_auth: yes
+#       method: POST
+#       user: "{{secret.username}}"
+#       password: "{{secret.password}}"
+#       status_code: 200
+#       validate_certs: no
+#       register: login
 
-# Use the URI    
-- name: Get hosts from vCenter
-  uri:
-    url: "https://{{secret.hostname}}/rest/vcenter/host"
-    force_basic_auth: yes
-    validate_certs: no
-    headers:
-      Cookie: "{{login.set_cookie}}"
-    register: vchosts
+# # Use the URI    
+# - name: Get hosts from vCenter
+#   uri:
+#     url: "https://{{secret.hostname}}/rest/vcenter/host"
+#     force_basic_auth: yes
+#     validate_certs: no
+#     headers:
+#       Cookie: "{{login.set_cookie}}"
+#     register: vchosts
 
-# Use Ansible Modules
-- name: Set Syslog Host on ESXi hosts
-  vmware_host_config_manager:
-    hostname: "{{secret.hostname}}"
-    username: "{{secret.username}}"
-    password: "{{secret.password}}"
-    esxi_hostname: "{{item.name}}"
-    options:
-      'Syslog.global.loghost': '192.168.1.1'
-      validate_certs: no
-    with_items:   # with items is a itterator, it will iterate over all vchosts
-      -"{{vchosts.json.value}}"
+# # Use Ansible Modules
+# - name: Set Syslog Host on ESXi hosts
+#   vmware_host_config_manager:
+#     hostname: "{{secret.hostname}}"
+#     username: "{{secret.username}}"
+#     password: "{{secret.password}}"
+#     esxi_hostname: "{{item.name}}"
+#     options:
+#       'Syslog.global.loghost': '192.168.1.1'
+#       validate_certs: no
+#     with_items:   # with items is a itterator, it will iterate over all vchosts
+#       -"{{vchosts.json.value}}"
 
-- name: Ensure Syslog Service is running on ESXI hosts
-  vmware_host_service_manager:
-    hostname: "{{secret.hostname}}"
-    username: "{{secret.username}}"
-    password: "{{secret.password}}"
-    esxi_hostname: "{{item.name}}"
-    service_name: vmsyslogd
-    state: present
-    validate_certs: no
-  with_items:   # with items is a itterator, it will iterate over all vchosts
-    -"{{vchosts.json.value}}"
+# - name: Ensure Syslog Service is running on ESXI hosts
+#   vmware_host_service_manager:
+#     hostname: "{{secret.hostname}}"
+#     username: "{{secret.username}}"
+#     password: "{{secret.password}}"
+#     esxi_hostname: "{{item.name}}"
+#     service_name: vmsyslogd
+#     state: present
+#     validate_certs: no
+#   with_items:   # with items is a itterator, it will iterate over all vchosts
+#     -"{{vchosts.json.value}}"
