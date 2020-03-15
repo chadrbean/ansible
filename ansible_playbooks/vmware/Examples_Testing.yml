@@ -40,6 +40,9 @@
       validate_certs: no
     with_items:   # with items is a itterator, it will iterate over all vchosts
       -"{{vchosts.json.value}}"
+- debug:
+    var: vchosts.json.value
+    verbosity: 2
 
   - name: Ensure Syslog Service is running on ESXI hosts
     vmware_host_service_manager:
