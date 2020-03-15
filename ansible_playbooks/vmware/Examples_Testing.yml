@@ -16,7 +16,7 @@
       password: "{{secret.password}}"
       status_code: 200
       validate_certs: no
-    register: login
+  
 
   # Use the URI    
   - name: Get hosts from vCenter
