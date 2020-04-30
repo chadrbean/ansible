@@ -10,5 +10,8 @@
 - name: Create Zones
   import_playbook: bind_plays/bind_zone_create.yml
 
+- name: Open Firewall For DNS
+  import_playbook: bind_plays/bind_firewall.yml
+
 - name: Restart Bind Services
   import_playbook: bind_plays/bind_restart.yml

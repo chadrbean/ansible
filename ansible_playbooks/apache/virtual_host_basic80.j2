@@ -1,0 +1,8 @@
+<VirtualHost *:80>
+    ServerAdmin webmaster@dummy-host.example.com
+    DocumentRoot "{{ DocumentRoot }}"
+    ServerName {{ ServerName }}
+    ServerAlias {{ ServerAlias }}
+    ErrorLog "/var/log/httpd/{{ website }}_error.log"
+    CustomLog "/var/log/httpd/{{ website }}_custom.log" common
+</VirtualHost>
