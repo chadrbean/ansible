@@ -1,0 +1,20 @@
+- name: Check if zone exists and if not add
+  hosts: bind
+  become: yes
+  tasks:
+    - name: Register Variable
+      shell: cat /etc/named.conf
+      register: named_conf
+
+    - name: Check Zones and Add
+      template:
+        dest: /var/named/{{ item }}
+        src: "{{ item }}.j2"
+      register: zone_add
+      with_items:
+        - chadrbean.com.db
+        - linuxrocks.com.db
+
+    - name: Debug Result
+      debug:
+        msg: "{{ zone_add }}"

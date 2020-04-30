@@ -1,0 +1,30 @@
+---
+- name: Install and Configure Apache
+  hosts: apache
+  become: yes
+  tasks:
+    - block:
+      - name: Install Base Apache and Mod_SSL
+        vars:
+          packages:
+            ['httpd','mod_ssl']
+        yum:
+          name: "{{ item }}"
+          state: latest
+        with_items: "{{ packages }}"
+        register: install_result
+      - name: debug result
+        debug:
+          var: install_result.changed
+    - block:
+      - name: Enable and Start The service
+        service:
+          name: httpd:
+          enabled: true
+          state: started
+        register: service_enabled_started
+      - name: Debug Enabled and Started
+        debug:
+          var: service_enabled_started.changed
+        
+

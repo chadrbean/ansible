@@ -1,0 +1,18 @@
+---
+- name: Install Bind Service
+  hosts: bind
+  become: yes
+  tasks:
+    - name: Install Bind Packages
+      vars:
+        packages: ['bind', 'bind-utils']
+      yum:
+        name: "{{ packages  }}"
+        state: latest
+    - name: Enable and Start Service
+      service:
+        name: "{{ item }}"
+        enabled: true
+      with_items:
+        - named
+
