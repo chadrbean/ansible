@@ -1,0 +1,15 @@
+- name: Restart Bind Services
+  hosts: bind
+  become: yes
+  tasks:
+    - name: Restart Bind Services
+      service:
+        name: named  
+        state: restarted
+      register: bind_restart
+      ignore_errors: yes
+    - name: Debug Bind Restart
+      debug:
+        var: bind_restart
+        
+      

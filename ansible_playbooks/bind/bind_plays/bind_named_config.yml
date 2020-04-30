@@ -1,0 +1,31 @@
+- name: Configure Bind named.conf
+  hosts: bind
+  become: yes
+  tasks:
+    - name: "Ansible Lineinfile Multiple Lines"
+      lineinfile:
+        path: /etc/named.conf
+        # Line to Search/Match against
+        regexp: '{{item.From}}'
+        # Line to Replace with
+        line: '{{item.To}}'
+        state: present
+        # To validate the Changes Before Committing/Saving
+      with_items:
+        - { From: 'listen-on port 53 { 127.0.0.1; };', To: '        #listen-on port 53 { 127.0.0.1; };'}
+        - { From: 'allow-query     { localhost; };', To: '        allow-query     { 192.168.1.0/24; };'}
+   
+    - name: Add Zone To Named.CONF
+      blockinfile:
+        path: /etc/named.conf
+        block: |
+          zone "{{ item.domain }}" IN {
+            type master;
+            allow-query {any; };
+            file "{{ item.domain }}.db";
+          };
+        marker: "# {mark} ANSIBLE MANAGED BLOCK {{ item.domain }}"
+      loop:
+        - { domain: linuxrocks.com }
+        - { domain: chadrbean.com }
+
